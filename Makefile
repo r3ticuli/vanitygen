@@ -1,7 +1,7 @@
-LIBS=-lpcre -lcrypto -lm -lpthread
-CFLAGS=-ggdb -O3 -Wall
-OBJS=vanitygen.o oclvanitygen.o oclvanityminer.o oclengine.o keyconv.o pattern.o util.o
-PROGS=vanitygen keyconv oclvanitygen oclvanityminer
+LIBS= -lpcre -lcrypto -lm -lpthread
+INCPATHS=-I$(shell brew --prefix)/include -I$(shell brew --prefix openssl)/include
+LIBPATHS=-L$(shell brew --prefix)/lib -L$(shell brew --prefix openssl)/lib
+CFLAGS=-ggdb -O3 -Wall -Qunused-arguments $(INCPATHS) $(LIBPATHS)
 
 PLATFORM=$(shell uname -s)
 ifeq ($(PLATFORM),Darwin)
